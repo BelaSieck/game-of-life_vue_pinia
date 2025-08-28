@@ -1,6 +1,6 @@
-import { ref, computed } from 'vue'
+import { ref, computed, toRaw } from 'vue'
 import { defineStore } from 'pinia'
-import { randomGrid } from '@/functions/grid-functions'
+import { createEmptyGrid, createGridWithShape, randomGrid } from '@/functions/grid-functions'
 import { gridStateToString } from '@/functions/grid-functions'
 import { nextGridState } from '@/functions/grid-functions'
 
@@ -13,5 +13,11 @@ export const useCellStateStore = defineStore('cell-state-grid', () => {
     function nextCellStateGrid() {
         cellStateGrid.value = nextGridState(cellStateGrid.value)
     }
-    return { cellStateGrid, newRandomGrid, nextCellStateGrid }
+    function addShape(shape: boolean[][], row: number, col: number) {
+       cellStateGrid.value = createGridWithShape(toRaw(cellStateGrid.value), shape, row, col)
+    }
+    function clearGrid() {
+        cellStateGrid.value = createEmptyGrid(size.value, size.value)
+    }
+    return { cellStateGrid, newRandomGrid, nextCellStateGrid, addShape, clearGrid }
 })

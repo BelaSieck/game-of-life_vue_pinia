@@ -3,7 +3,7 @@ export function randomGrid(size: number): boolean[][] {
         () => Array.from({length: size}, () => Math.random() > 0.5))
 }
 
-export function gridStateToString(gridState: boolean[][]) {
+export function gridStateToString(gridState: boolean[][]): string {
     let output = '[\n'
     for(let row = 0; row < gridState.length; row++) {
         output += (gridState[row].map(cell => cell ? 'T' : 'F')).join(',') + '\n'
@@ -12,7 +12,7 @@ export function gridStateToString(gridState: boolean[][]) {
     return output
 }
 
-export function nextGridState(gridState: boolean[][]) {
+export function nextGridState(gridState: boolean[][]): boolean[][] {
     let nextState: boolean[][] = []
     for(let row = 0; row < gridState.length; row++) {
         nextState.push([])
@@ -24,7 +24,7 @@ export function nextGridState(gridState: boolean[][]) {
     return nextState
 }
 
-export function nextCellState(row: number, col: number, gridState: boolean[][]) {
+export function nextCellState(row: number, col: number, gridState: boolean[][]): boolean {
     const numberLivingNeighbors = countLivingNeighbors(row, col, gridState)
     switch(numberLivingNeighbors) {
         case 0: case 1: return false;
@@ -51,4 +51,27 @@ export function countLivingNeighbors(row: number, col: number, gridState: boolea
         }
     }
     return count
+}
+
+export function createEmptyGrid(rows: number, columns: number): boolean[][] {
+    let grid: boolean[][] = []
+    for(let r = 0; r < rows; r++) {
+        grid.push([])
+        for(let c = 0; c < columns; c++) {
+            grid[r][c] = false
+        }
+    }
+    return grid
+}
+
+export function createGridWithShape(gridState: boolean[][], shape: boolean[][], row: number, col: number): boolean[][] {
+    const newGrid = structuredClone(gridState)
+    const shapeRows = shape.length
+    const shapeCols = shape[0].length
+    for(let r = 0; r < shapeRows; r++) {
+        for(let c = 0; c < shapeCols; c++) {
+            newGrid[row + r][col + c] = shape[r][c]
+        }
+    }
+    return newGrid
 }
