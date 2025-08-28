@@ -20,8 +20,8 @@ import { useCellStateStore } from '@/stores/cell-state-store';
 
 <template>
     <div class="controls">
-        <button class="control-button" @click="CellState.newRandomGrid">New Random Grid</button>
-        <button class="control-button" @click="CellState.nextCellStateGrid">Next State</button>
+        <button class="control-button" @click="CellState.newRandomGrid">New Grid</button>
+        <button class="control-button" @click="CellState.nextCellStateGrid">Next</button>
         <button class="control-button" @click="togglePlay">{{ isPLaying ? 'Stop' : 'Start' }}</button>
     </div>
 </template>
