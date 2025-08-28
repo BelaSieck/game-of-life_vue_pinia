@@ -20,9 +20,9 @@ import { useCellStateStore } from '@/stores/cell-state-store';
 
 <template>
     <div class="controls">
-        <button @click="CellState.newRandomGrid">New Random Grid</button>
-        <button @click="CellState.nextCellStateGrid">Next State</button>
-        <button @click="togglePlay">{{ isPLaying ? 'Stop' : 'Start' }}</button>
+        <button class="control-button" @click="CellState.newRandomGrid">New Random Grid</button>
+        <button class="control-button" @click="CellState.nextCellStateGrid">Next State</button>
+        <button class="control-button" @click="togglePlay">{{ isPLaying ? 'Stop' : 'Start' }}</button>
     </div>
 </template>
 
@@ -32,5 +32,9 @@ import { useCellStateStore } from '@/stores/cell-state-store';
         justify-content: center;
         align-items: center;
         column-gap: 1em;
+    }
+
+    .control-button {
+        font-size: 1.5em;
     }
 </style>
