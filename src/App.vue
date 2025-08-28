@@ -5,8 +5,9 @@
 
 <template>
   <div class="main">
-    <gol-grid class="g"/>
-    <Controls class="c"></Controls>
+    <h1 class="title">Game of Life</h1>
+    <gol-grid class="gol-grid"/>
+    <Controls class="controls"></Controls>
   </div>
 </template>
 
@@ -17,12 +18,16 @@
   grid-template-rows: 20vh 20vh 20vh 20vh 20vh; 
   gap: 0px 0px; 
   grid-template-areas: 
-    ". . . . ."
+    ". t t t ."
     ". g g g ."
     ". g g g ."
     ". g g g ."
     ". c c c ."; 
 }
-.g { grid-area: g; }
-.c { grid-area: c; }
+.gol-grid { grid-area: g; }
+.controls { grid-area: c; }
+.title { 
+  grid-area: t;
+  text-align: center; 
+}
 </style>
