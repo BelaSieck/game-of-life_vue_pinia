@@ -5,7 +5,6 @@
 </script>
 
 <template>
-    <h1>Game of Life Grid</h1>
     <table class="cell-grid">
         <tr class="cell-state-row" 
             v-for="(cellRow, rowKey) in cellStateStore.cellStateGrid"
@@ -19,4 +18,8 @@
 </template>
 
 <style scoped>
+.cell-grid {
+   /*  margin-left: auto;
+    margin-right: auto; */
+}
 </style>

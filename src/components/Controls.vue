@@ -19,7 +19,18 @@ import { useCellStateStore } from '@/stores/cell-state-store';
 </script>
 
 <template>
-    <button @click="CellState.newRandomGrid">New Random Grid</button>
-    <button @click="CellState.nextCellStateGrid">Next State</button>
-    <button @click="togglePlay">{{ isPLaying ? 'Stop' : 'Start' }}</button>
+    <div class="controls">
+        <button @click="CellState.newRandomGrid">New Random Grid</button>
+        <button @click="CellState.nextCellStateGrid">Next State</button>
+        <button @click="togglePlay">{{ isPLaying ? 'Stop' : 'Start' }}</button>
+    </div>
 </template>
+
+<style lang="css" scoped>
+    .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1em;
+    }
+</style>
