@@ -75,3 +75,13 @@ export function createGridWithShape(gridState: boolean[][], shape: boolean[][], 
     }
     return newGrid
 }
+
+export function parseShape(shapeString: string): boolean[][] {
+    const cleanedString = shapeString.replace(/[ \t\r\f\v]/g, '')
+    const rows = cleanedString.split('\n')
+    const rowsCleaned = rows.filter(row => row != '')
+    const parsedShape = rowsCleaned
+        .map(row => row.split('')
+            .map(char => char == 'O' ? true : false))
+    return parsedShape
+}
